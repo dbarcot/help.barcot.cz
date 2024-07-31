@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+	
+    <title>Remote Support Software Download</title>
+    <style>
+        body, html {
+            height: 100%;
+			width: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 3.3rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            max-width: 1100px;
+            width: 100%;
+            margin-top: -25vh;
+            position: relative;
+        }
+        .after-element {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: lightgrey;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .after-element:hover {
+            background-color: #d0d0d0;
+        }
+        .after-element:active {
+            background-color: #b0b0b0;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+        .download-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            gap: 45px;
+        }
+        .download-option {
+            background-color: #ffeeba;
+            padding: 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50%;
+            height: auto;
+            text-align: left;
+        }
+        .download-option:hover {
+            transform: scale(1.1);
+        }
+        .download-option h2 {
+            margin-top: 0.5rem;
+            color: #555;
+            padding-left: 1rem; 
+        }
+        .download-option p {
+            font-size: 1rem;
+            color: #777;
+            margin-top: 0.5rem;
+            line-height: 1.5rem;
+            padding-left: 1rem; 
+            padding-right: 1rem; 
+        }
+        #quick-support {
+            background-color: #d4edda;
+        }
+        #permanent-install {
+            background-color: #cce5ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Software pro vzdálenou podporu</h1>
+        <div class="download-options">
+            <div id="quick-support" class="download-option" onclick="window.location.href='https://custom.teamviewer.com/dbarcotquick'">
+                <h2>Rychlá pomoc</h2>
+                <p>Po stažení spusťte a předejte IT podpoře zobrazené ID číslo a heslo.</p>
+                <p>Tato verze se neinstaluje. Jakmile program ukončíte, ztratí vzdálená IT podpora přistup na váš počítač.</p>
+            </div>
+            <div id="permanent-install" class="download-option" onclick="window.location.href='https://custom.teamviewer.com/dbarcothost'">
+                <h2>Trvalá instalace</h2>
+                <p>Po stažení nainstalujte a předejte IT podpoře zobrazené ID číslo a heslo.</p>
+                <p>Tato verze na vašem počítači zůstane nainstalována natrvalo. Bude se automaticky spouštět při každém startu systému.</p>
+            </div>
+        </div>
+        <div class="after-element" id="after-element"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('after-element').addEventListener('click', function() {
+                window.location.href = 'https://www.teamviewer.com/cs/download/';
+            });
+        });
+    </script>
+	
+	<audio id="bg-audio" src="bg.mp3" preload="auto" loop></audio>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bgAudio = document.getElementById('bg-audio');
+        bgAudio.pause();
+
+        document.body.addEventListener('click', function(event) {
+            const container = document.querySelector('.container');
+            if (!container.contains(event.target)) {
+                if (bgAudio.paused) {
+                    bgAudio.play();
+                } else {
+                    bgAudio.pause();
+                    bgAudio.currentTime = 0;
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
